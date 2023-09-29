@@ -7,8 +7,8 @@ export default function Spotlight({ image, artist }) {
       <h2>Spotlight Piece</h2>
       <Image
         src={image}
-        height={145}
-        width={145}
+        height={400}
+        width={400}
         alt={`spotlight: ${artist}`}
       />
       <p>Artist: {artist}</p>
