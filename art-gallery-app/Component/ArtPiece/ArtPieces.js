@@ -1,17 +1,17 @@
-import ArtPiecePreview from '../ArtPiecePreview/ArtPiecePreview.js';
+import ArtPiecePreview from "../ArtPiecePreview/ArtPiecePreview.js";
 
 export default function ArtPieces({ pieces }) {
   return (
-    <div>
+    <ul>
       {pieces.map((piece) => (
-        <ArtPiecePreview
-          key={piece.slug}
-          image={piece.imageSource}
-          title={piece.name}
-          artist={piece.artist}
-        />
+        <li key={piece.slug}>
+          <ArtPiecePreview
+            image={piece.imageSource}
+            title={piece.name}
+            artist={piece.artist}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
-
