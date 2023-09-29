@@ -1,7 +1,6 @@
-import React from 'react';
-import ArtPiecePreview from './ArtPiecePreview';
+import ArtPiecePreview from '../ArtPiecePreview/ArtPiecePreview.js';
 
-function ArtPieces({ pieces }) {
+export default function ArtPieces({ pieces }) {
   return (
     <div>
       {pieces.map((piece) => (
@@ -16,4 +15,3 @@ function ArtPieces({ pieces }) {
   );
 }
 
-export default ArtPieces;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ArtPiecePreview({ image, title, artist }) {
+export default function ArtPiecePreview({ image, title, artist }) {
   return (
     <div>
       <img src={image} alt={title} />
@@ -10,4 +10,3 @@ function ArtPiecePreview({ image, title, artist }) {
   );
 }
 
-export default ArtPiecePreview;
