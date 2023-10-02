@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-
 export default function Spotlight({
   image,
   artist,

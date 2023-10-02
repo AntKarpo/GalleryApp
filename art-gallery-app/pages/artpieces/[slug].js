@@ -1,5 +1,6 @@
 import ArtPieceDetails from "../../Component/ArtPieceDetails/ArtPieceDetails";
 import { useRouter } from "next/router";
+import CommentForm from "@/Component/CommentForm/CommentForm";
 
 export default function pieceDetails({ artPieces }) {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function pieceDetails({ artPieces }) {
       genre={genre}
       />
        <button onClick={() => router.back()}>Back</button>
+       <CommentForm/>
       </>
       );
 }

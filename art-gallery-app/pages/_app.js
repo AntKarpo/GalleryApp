@@ -12,11 +12,22 @@ export default function App({ Component, pageProps }) {
   );
 
   const [artPiecesInfo, setArtPiecesInfo] = useState([]);
-/*
-  useEffect(() => {
-    if (artPieces) setArtPiecesInfo(artPieces);
-  }, [artPieces]);
-*/
+
+function Comment(slug, newComment) {
+  const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+  if (artPiece) {
+    setArtPiecesInfo(
+      artPiecesInfo.map((pieceInfo) => {
+        if (pieceInfo.slug === slug) {
+          return pieceInfo.comments
+            ? { ...pieceInfo, comments: [...pieceInfo.comments, newComment] }
+            : { ...pieceInfo, comments: [newComment] };
+        }
+      })
+      )
+  }
+  }
+
   function handleToggle(slug) {
     const favoriteArtPiece = artPiecesInfo.find((piece) => piece.slug === slug);
 
@@ -39,6 +50,7 @@ export default function App({ Component, pageProps }) {
           artPieces={artPieces}
           artPiecesInfo={artPiecesInfo}
           onToggleFavorite={handleToggle}
+          Comment={Comment}
         />
       </Layout>
     </>
