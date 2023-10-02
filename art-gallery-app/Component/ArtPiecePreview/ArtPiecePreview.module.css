@@ -1,0 +1,27 @@
+.art-piece-preview {
+  position: relative;
+  max-width: 450px;
+  text-align: center;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.8);
+  color: #aaa;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+}
+
+.art-piece-preview:hover .content {
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.art-image {
+  width: 100%;
+}

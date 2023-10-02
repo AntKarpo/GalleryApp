@@ -1,28 +1,21 @@
 import ArtPieces from "@/Component/ArtPiece/ArtPieces";
 
-
 export default function favorite({
   artPieces,
   artPiecesInfo,
-  onToggleFavorite
+  onToggleFavorite,
 }) {
-  console.log("artPieces", artPieces);
-  console.log("artPiecesInfo", artPiecesInfo);
-  const favArtPieces = artPieces.filter((artPiece) =>
-  artPiecesInfo.find(
-     (artPieceInfo) =>
-       artPieceInfo.slug === artPiece.slug && artPieceInfo.isFavorite
-  )
- );
+  const favArtPieces = artPieces.filter((artPiece) => {
+    return !!artPiecesInfo[artPiece.slug]?.isFavorite;
+  });
 
   return (
     <>
-      <ArtPieces 
-        pieces={favArtPieces} 
-        artPieceInfo={artPiecesInfo}
+      <ArtPieces
+        pieces={favArtPieces}
+        artPiecesInfo={artPiecesInfo}
         onToggleFavorite={onToggleFavorite}
-        s
-      /> 
+      />
     </>
   );
 }
