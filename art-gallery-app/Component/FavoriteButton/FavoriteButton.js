@@ -1,6 +1,9 @@
-import function default FavoriteButton(isFavorite, onToggleFavorite){
+
+export default function FavoriteButton({ isFavorite, onToggleFavorite }) {
   return (
-    <button type="click" onClick={onToggleFavorite}>Favorite
+    <button type="button" onClick={onToggleFavorite} isFavorite={isFavorite}>
+      Favorite
     </button>
-  )
+  );
 }
+
