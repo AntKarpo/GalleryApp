@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 export default function ArtPieceDetails({ image, title, artist, year, genre }) {
   return (
@@ -9,4 +10,5 @@ export default function ArtPieceDetails({ image, title, artist, year, genre }) {
       <p>{genre}</p>
     </>
   );
+
 }
