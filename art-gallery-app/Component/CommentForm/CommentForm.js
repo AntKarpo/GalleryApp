@@ -3,8 +3,9 @@
 export default function CommentForm({onSubmitComment}){
     function handleSubmit(event){
         event.preventDefault();
-        const {comment} = event.target.elements;
+        const comment = event.target.elements;
         onSubmitComment(comment.value);
+        
     }
     return(
         <>
