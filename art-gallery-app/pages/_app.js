@@ -11,12 +11,12 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
-  const [artPiecesInfo, setArtPiecesInfo] = useState();
-
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+/*
   useEffect(() => {
     if (artPieces) setArtPiecesInfo(artPieces);
   }, [artPieces]);
-
+*/
   function handleToggle(slug) {
     const favoriteArtPiece = artPiecesInfo.find((piece) => piece.slug === slug);
 
@@ -27,9 +27,8 @@ export default function App({ Component, pageProps }) {
     );
   }
   if (error) return <div>Error loading art pieces</div>;
-  if (!artPiecesInfo) return <div>Loading...</div>;
+  if (!artPieces) return <div>Loading...</div>;
 
-  console.log("artPiecesInfo", artPiecesInfo);
 
   return (
     <>

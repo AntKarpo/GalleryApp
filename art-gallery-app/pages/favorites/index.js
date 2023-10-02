@@ -1,28 +1,28 @@
 import ArtPieces from "@/Component/ArtPiece/ArtPieces";
-import FavoriteButton from "@/Component/FavoriteButton/FavoriteButton";
 
-export default function favorite(
+
+export default function favorite({
   artPieces,
   artPiecesInfo,
-  isFavorite,
   onToggleFavorite
-) {
+}) {
   console.log("artPieces", artPieces);
-  // // const favArtPieces = artPieces.filter((artPiece) =>
-  //   artPiecesInfo.find(
-  // //     (artPieceInfo) =>
-  // //       artPieceInfo.slug === artPiece.slug && artPieceInfo.isFavorite
-  // //   )
-  // );
+  console.log("artPiecesInfo", artPiecesInfo);
+  const favArtPieces = artPieces.filter((artPiece) =>
+  artPiecesInfo.find(
+     (artPieceInfo) =>
+       artPieceInfo.slug === artPiece.slug && artPieceInfo.isFavorite
+  )
+ );
 
   return (
     <>
-      {/* <ArtPieces pieces={favArtPieces} />
-      <FavoriteButton
-        isFavorite={isFavorite}
+      <ArtPieces 
+        pieces={favArtPieces} 
+        artPieceInfo={artPiecesInfo}
         onToggleFavorite={onToggleFavorite}
         s
-      /> */}
+      /> 
     </>
   );
 }
