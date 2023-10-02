@@ -1,7 +1,13 @@
 import React from "react";
 import Image from "next/image";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-export default function Spotlight({ image, artist }) {
+export default function Spotlight({
+  image,
+  artist,
+  onToggleFavorite,
+  isFavorite,
+}) {
   return (
     <div>
       <h2>Spotlight Piece</h2>
@@ -12,6 +18,10 @@ export default function Spotlight({ image, artist }) {
         alt={`spotlight: ${artist}`}
       />
       <p>Artist: {artist}</p>
+      <FavoriteButton
+        onToggleFavorite={onToggleFavorite}
+        isFavorite={isFavorite}
+      />
     </div>
   );
 }
