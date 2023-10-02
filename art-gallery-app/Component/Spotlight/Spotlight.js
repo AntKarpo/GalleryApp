@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import ArtPieces from "../ArtPiece/ArtPieces";
 
 export default function Spotlight({ image, artist }) {
   return (
