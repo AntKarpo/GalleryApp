@@ -5,6 +5,7 @@ export default createGlobalStyle`
   *::before,
   *::after {
     box-sizing: border-box;
+    transition: all 0.2s linear;
   }
 
   body {
