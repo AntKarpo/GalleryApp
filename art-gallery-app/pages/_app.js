@@ -28,13 +28,13 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleToggle(slug) {
-    updateArtPiecesInfo((draft) => {
-      if (!draft[slug]) {
-        draft[slug] = { isFavorite: false, comments: [] };
-      }
+    const draft = { ...artPiecesInfo };
+    if (!draft[slug]) {
+      draft[slug] = { isFavorite: false, comments: [] };
+    }
 
-      draft[slug].isFavorite = !draft[slug].isFavorite;
-    });
+    draft[slug].isFavorite = !draft[slug].isFavorite;
+    updateArtPiecesInfo(draft);
   }
   if (error) return <div>Error loading art pieces</div>;
   if (!artPieces) return <div>Loading...</div>;
