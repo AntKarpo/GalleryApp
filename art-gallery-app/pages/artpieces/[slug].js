@@ -21,7 +21,7 @@ export default function pieceDetails({
         artist={artist}
         year={year}
         genre={genre}
-        isFavorite={artPiecesInfo[slug].isFavorite}
+        isFavorite={artPiecesInfo[slug]?.isFavorite}
         onToggleFavorite={() => onToggleFavorite(slug)}
       />
       <button onClick={() => router.back()}>Back</button>

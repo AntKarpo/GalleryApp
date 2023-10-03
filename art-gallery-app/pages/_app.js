@@ -2,6 +2,8 @@ import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState"
 import useSWR from "swr";
 import GlobalStyle from "../styles";
 import Layout from "@/Component/Layout/layout";
+import Header from "@/Component/Header/Header";
+import Footer from "@/Component/Footer/Footer";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -17,22 +19,20 @@ export default function App({ Component, pageProps }) {
   );
   function Comment(slug, newComment) {
     updateArtPiecesInfo((draft) => {
-     
       if (!draft[slug]) {
         draft[slug] = { isFavorite: false, comments: [] };
       }
-      
+
       draft[slug].comments.push(newComment);
     });
   }
 
   function handleToggle(slug) {
     updateArtPiecesInfo((draft) => {
-   
       if (!draft[slug]) {
         draft[slug] = { isFavorite: false, comments: [] };
       }
-    
+
       draft[slug].isFavorite = !draft[slug].isFavorite;
     });
   }
@@ -40,6 +40,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Layout>
+        <Header />
         <GlobalStyle />
         <Component
           {...pageProps}
@@ -48,6 +49,7 @@ export default function App({ Component, pageProps }) {
           onToggleFavorite={handleToggle}
           Comment={Comment}
         />
+        <Footer />
       </Layout>
     </>
   );

@@ -1,0 +1,21 @@
+.app-navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: beige;
+}
+
+.navigation-link {
+  padding: 5px 20px;
+  display: block;
+  text-decoration: none;
+  width: 33%;
+  text-align: center;
+  border: 1px solid;
+  font-weight: bold;
+}
+
+.navigation-link.active {
+  background: #fff;
+}

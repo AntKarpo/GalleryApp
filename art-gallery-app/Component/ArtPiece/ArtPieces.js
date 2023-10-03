@@ -5,7 +5,7 @@ export default function ArtPieces({ pieces, onToggleFavorite, artPiecesInfo }) {
   return (
     <ul className={styles.artList}>
       {pieces.map((piece) => (
-        <li key={piece.slug}>
+        <li key={piece.slug} className={styles.preview}>
           <ArtPiecePreview
             title={piece.name}
             image={piece.imageSource}

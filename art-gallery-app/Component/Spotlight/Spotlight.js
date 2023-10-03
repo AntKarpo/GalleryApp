@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import styles from "./Spotlight.module.css";
 
 export default function Spotlight({
   image,
@@ -9,19 +10,21 @@ export default function Spotlight({
   isFavorite,
 }) {
   return (
-    <div>
-      <h2>Spotlight Piece</h2>
+    <div className={styles.spotlight}>
       <Image
         src={image}
-        height={400}
-        width={400}
+        height={300}
+        width={300}
         alt={`spotlight: ${artist}`}
+        className={styles["spotlight-image"]}
       />
-      <p>Artist: {artist}</p>
-      <FavoriteButton
-        onToggleFavorite={onToggleFavorite}
-        isFavorite={isFavorite}
-      />
+      <div className={styles.content}>
+        <p>Artist: {artist}</p>
+        <FavoriteButton
+          onToggleFavorite={onToggleFavorite}
+          isFavorite={isFavorite}
+        />
+      </div>
     </div>
   );
 }

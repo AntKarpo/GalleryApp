@@ -13,23 +13,25 @@ export default function ArtPiecePreview({
 }) {
   return (
     <div className={styles["art-piece-preview"]}>
-      <Link href={`/artpieces/${slug}`}>
-        <Image
-          src={image}
-          height={300}
-          width={300}
-          alt={title}
-          className={styles["art-image"]}
-        />
+      <Image
+        src={image}
+        height={300}
+        width={300}
+        alt={title}
+        className={styles["art-image"]}
+      />
+      <Link href={`/artpieces/${slug}`} className={styles.content}>
+        <div className={styles["content--title"]}>
+          <h2 className={styles.title}>{title}</h2>
+          <p className={styles.artist}>- {artist}</p>
+        </div>
+        <div className={styles["content--options"]}>
+          <FavoriteButton
+            onToggleFavorite={onToggleFavorite}
+            isFavorite={isFavorite}
+          />
+        </div>
       </Link>
-      <div className={styles.content}>
-        <h2>{title}</h2>
-        <p>Artist: {artist}</p>
-        <FavoriteButton
-          onToggleFavorite={onToggleFavorite}
-          isFavorite={isFavorite}
-        />
-      </div>
     </div>
   );
 }
