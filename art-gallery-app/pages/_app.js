@@ -2,6 +2,8 @@ import useSWR from "swr";
 import GlobalStyle from "../styles";
 import Layout from "@/Component/Layout/layout";
 import { useEffect, useState } from "react";
+import Header from "@/Component/Header/Header";
+import Footer from "@/Component/Footer/Footer";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -41,6 +43,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Layout>
+        <Header />
         <GlobalStyle />
         <Component
           {...pageProps}
@@ -49,6 +52,7 @@ export default function App({ Component, pageProps }) {
           onToggleFavorite={handleToggle}
           Comment={Comment}
         />
+        <Footer />
       </Layout>
     </>
   );

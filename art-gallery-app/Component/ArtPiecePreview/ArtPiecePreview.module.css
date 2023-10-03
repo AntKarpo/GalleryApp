@@ -1,27 +1,38 @@
 .art-piece-preview {
   position: relative;
-  max-width: 450px;
   text-align: center;
+  background-color: beige;
+  padding: 20px;
+  overflow: hidden;
 }
 
 .content {
   position: absolute;
-  top: 0;
+  top: 100%;
+  left: 0;
   width: 100%;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.8);
   color: #aaa;
   height: 100%;
   display: flex;
-  align-items: center;
-  opacity: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 40%, #000);
+  transition: all 0.5s ease-in-out;
+  text-decoration: none;
+  padding: 32px;
 }
 
 .art-piece-preview:hover .content {
-  opacity: 1;
-  transition: all 200ms ease-in-out;
+  top: 0;
 }
 
 .art-image {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+}
+
+.artist {
+  text-align: right;
+  margin-top: 24px;
 }

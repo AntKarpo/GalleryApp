@@ -1,0 +1,34 @@
+.spotlight {
+  position: relative;
+  text-align: center;
+  background-color: beige;
+  padding: 20px;
+  overflow: hidden;
+  min-width: 300px;
+}
+
+.spotlight-image {
+  text-align: center;
+  margin-left: 10px;
+}
+
+.content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #aaa;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 40%, #000);
+  transition: all 0.5s ease-in-out;
+  text-decoration: none;
+  padding: 32px;
+}
+
+.spotlight:hover .content {
+  top: 0;
+}
