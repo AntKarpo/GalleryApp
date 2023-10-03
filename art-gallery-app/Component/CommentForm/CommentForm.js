@@ -5,7 +5,7 @@ export default function CommentForm({onSubmitComment}){
         event.preventDefault();
         const comment = event.target.elements;
         onSubmitComment(comment.value);
-        
+
     }
     return(
         <>
