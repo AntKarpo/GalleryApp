@@ -9,7 +9,7 @@ export default function pieceDetails({
 }) {
   const router = useRouter();
   const { slug } = router.query;
-  const { imageSource, name, artist, year, genre } = artPieces.find(
+  const { imageSource, name, artist, year, genre, colors } = artPieces.find(
     (a) => a.slug === slug
   );
   return (
@@ -21,6 +21,7 @@ export default function pieceDetails({
         artist={artist}
         year={year}
         genre={genre}
+        colors={colors}
         isFavorite={artPiecesInfo[slug]?.isFavorite}
         onToggleFavorite={() => onToggleFavorite(slug)}
       />

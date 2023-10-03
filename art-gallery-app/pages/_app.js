@@ -38,7 +38,6 @@ export default function App({ Component, pageProps }) {
   }
   if (error) return <div>Error loading art pieces</div>;
   if (!artPieces) return <div>Loading...</div>;
-
   return (
     <Layout>
       <Header />
