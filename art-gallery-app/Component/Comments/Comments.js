@@ -1,4 +1,3 @@
-
 import React from "react";
 
 export default function Comments({ comments }) {
@@ -6,7 +5,7 @@ export default function Comments({ comments }) {
     <div>
       <h2>Comments</h2>
       <ul>
-        {comments.map((comment, index) => (
+        {comments?.map((comment, index) => (
           <li key={index}>{comment}</li>
         ))}
       </ul>
