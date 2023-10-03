@@ -6,7 +6,7 @@ export default function Comments({ comments }) {
       <h2>Comments</h2>
       <ul>
         {comments?.map((comment, index) => (
-          <li key={index}>{comment}</li>
+          <li key={index}>{comment.text}  {comment.timestamp}</li>
         ))}
       </ul>
     </div>
