@@ -1,0 +1,14 @@
+.favorite-btn {
+  background: transparent;
+  border: 0;
+}
+
+.favorite-btn .favorite-icon {
+  filter: brightness(0) saturate(100%) invert(99%) sepia(14%) saturate(13%)
+    hue-rotate(232deg) brightness(106%) contrast(73%);
+}
+
+.favorite-btn.favorited .favorite-icon {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(36%) saturate(4972%)
+    hue-rotate(335deg) brightness(88%) contrast(96%);
+}

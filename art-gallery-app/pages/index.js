@@ -1,7 +1,11 @@
 import React from "react";
 import Spotlight from "@/Component/Spotlight/Spotlight";
 
-export default function SpotlightPage({ artPieces, onToggleFavorite }) {
+export default function SpotlightPage({
+  artPieces,
+  onToggleFavorite,
+  artPiecesInfo,
+}) {
   const randomArtPiece =
     artPieces[Math.floor(Math.random() * artPieces.length)];
 
@@ -10,7 +14,7 @@ export default function SpotlightPage({ artPieces, onToggleFavorite }) {
       <Spotlight
         image={randomArtPiece.imageSource}
         artist={randomArtPiece.artist}
-        isFavorite={artPieces.isFavorite}
+        isFavorite={!!artPiecesInfo[randomArtPiece.slug]?.isFavorite}
         onToggleFavorite={() => onToggleFavorite(randomArtPiece.slug)}
       />
     </div>

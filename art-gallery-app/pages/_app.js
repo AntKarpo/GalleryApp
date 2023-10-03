@@ -11,35 +11,32 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useState({});
 
-function Comment(slug, newComment) {
-  const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-  if (artPiece) {
-    setArtPiecesInfo(
-      artPiecesInfo.map((pieceInfo) => {
-        if (pieceInfo.slug === slug) {
-          return pieceInfo.comments
-            ? { ...pieceInfo, comments: [...pieceInfo.comments, newComment] }
-            : { ...pieceInfo, comments: [newComment] };
-        }
-      })
-      )
-  }
+  function Comment(slug, newComment) {
+    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
+    if (artPiece) {
+      setArtPiecesInfo(
+        artPiecesInfo.map((pieceInfo) => {
+          if (pieceInfo.slug === slug) {
+            return pieceInfo.comments
+              ? { ...pieceInfo, comments: [...pieceInfo.comments, newComment] }
+              : { ...pieceInfo, comments: [newComment] };
+          }
+        })
+      );
+    }
   }
 
   function handleToggle(slug) {
-    const favoriteArtPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-
-    setArtPiecesInfo(
-      artPiecesInfo.map((piece) =>
-        favoriteArtPiece ? { ...piece, isFavorite: !piece.isFavorite } : piece
-      )
-    );
+    const favoriteArtPiece = artPiecesInfo[slug] || {};
+    favoriteArtPiece.isFavorite = !favoriteArtPiece.isFavorite;
+    const clonedList = { ...artPiecesInfo };
+    clonedList[slug] = { ...favoriteArtPiece };
+    setArtPiecesInfo(clonedList);
   }
   if (error) return <div>Error loading art pieces</div>;
   if (!artPieces) return <div>Loading...</div>;
-
 
   return (
     <>
