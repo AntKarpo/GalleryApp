@@ -36,21 +36,21 @@ export default function App({ Component, pageProps }) {
       draft[slug].isFavorite = !draft[slug].isFavorite;
     });
   }
+  if (error) return <div>Error loading art pieces</div>;
+  if (!artPieces) return <div>Loading...</div>;
 
   return (
-    <>
-      <Layout>
-        <Header />
-        <GlobalStyle />
-        <Component
-          {...pageProps}
-          artPieces={artPieces}
-          artPiecesInfo={artPiecesInfo}
-          onToggleFavorite={handleToggle}
-          Comment={Comment}
-        />
-        <Footer />
-      </Layout>
-    </>
+    <Layout>
+      <Header />
+      <GlobalStyle />
+      <Component
+        {...pageProps}
+        artPieces={artPieces}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={handleToggle}
+        Comment={Comment}
+      />
+      <Footer />
+    </Layout>
   );
 }

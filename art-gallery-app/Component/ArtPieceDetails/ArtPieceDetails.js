@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import CommentForm from "./CommentForm";
-import Comments from "./Comments";
+import CommentForm from "../CommentForm/CommentForm";
+import Comments from "../Comments/Comments";
 
 export default function ArtPieceDetails({
   image,
