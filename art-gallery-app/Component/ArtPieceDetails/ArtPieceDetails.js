@@ -10,6 +10,7 @@ export default function ArtPieceDetails({
   genre,
   onToggleFavorite,
   isFavorite,
+  colors
 }) {
 
   return (
@@ -19,6 +20,22 @@ export default function ArtPieceDetails({
       <h3>{artist}</h3>
       <p>{year}</p>
       <p>{genre}</p>
+      <div>
+        <h4>Color Palette:</h4>
+        <div style={{ display: "flex" }}>
+          {colors.map((color, index) => (
+            <div
+              key={index}
+              style={{
+                width: "30px",
+                height: "30px",
+                backgroundColor: color,
+                marginRight: "10px",
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
       <FavoriteButton
         onToggleFavorite={onToggleFavorite}
         isFavorite={isFavorite}
