@@ -13,7 +13,8 @@ export default function ArtPieceDetails({
   comments,
   onToggleFavorite,
   isFavorite,
-  colors
+  colors,
+  Comment
 }) {
   return (
     <div>
@@ -42,7 +43,7 @@ export default function ArtPieceDetails({
         isFavorite={isFavorite}
         onToggleFavorite={onToggleFavorite}
       />
-      <CommentForm onSubmitComment={onSubmitComment} />
+      <CommentForm Comment={Comment} />
       <Comments comments={comments} />
     </div>
   );
