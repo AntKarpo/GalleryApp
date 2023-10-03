@@ -17,14 +17,14 @@ export default function App({ Component, pageProps }) {
     "art-pieces-info",
     { defaultValue: {} }
   );
-  function Comment(slug, newComment) {
-    updateArtPiecesInfo((draft) => {
-      if (!draft[slug]) {
-        draft[slug] = { isFavorite: false, comments: [] };
-      }
+  function handleComment(slug, newComment) {
+    const draft = { ...artPiecesInfo };
+    if (!draft[slug]) {
+      draft[slug] = { isFavorite: false, comments: [] };
+    }
 
-      draft[slug].comments.push(newComment);
-    });
+    draft[slug].comments.push(newComment);
+    updateArtPiecesInfo(draft);
   }
 
   function handleToggle(slug) {
@@ -47,7 +47,7 @@ export default function App({ Component, pageProps }) {
         artPieces={artPieces}
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggle}
-        Comment={Comment}
+        onComment={handleComment}
       />
       <Footer />
     </Layout>

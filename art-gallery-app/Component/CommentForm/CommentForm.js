@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-export default function CommentForm({ Comment }) {
+export default function CommentForm({ onSubmitComment }) {
   const [commentText, setCommentText] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    Comment(commentText);
+    onSubmitComment(commentText);
     setCommentText("");
   };
 
