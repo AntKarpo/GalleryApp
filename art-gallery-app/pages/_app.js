@@ -1,7 +1,7 @@
+import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 import useSWR from "swr";
 import GlobalStyle from "../styles";
 import Layout from "@/Component/Layout/layout";
-import { useEffect, useState } from "react";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -11,32 +11,31 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
-  const [artPiecesInfo, setArtPiecesInfo] = useState({});
-
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: {} }
+  );
   function Comment(slug, newComment) {
-    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-    if (artPiece) {
-      setArtPiecesInfo(
-        artPiecesInfo.map((pieceInfo) => {
-          if (pieceInfo.slug === slug) {
-            return pieceInfo.comments
-              ? { ...pieceInfo, comments: [...pieceInfo.comments, newComment] }
-              : { ...pieceInfo, comments: [newComment] };
-          }
-        })
-      );
-    }
+    updateArtPiecesInfo((draft) => {
+     
+      if (!draft[slug]) {
+        draft[slug] = { isFavorite: false, comments: [] };
+      }
+      
+      draft[slug].comments.push(newComment);
+    });
   }
 
   function handleToggle(slug) {
-    const favoriteArtPiece = artPiecesInfo[slug] || {};
-    favoriteArtPiece.isFavorite = !favoriteArtPiece.isFavorite;
-    const clonedList = { ...artPiecesInfo };
-    clonedList[slug] = { ...favoriteArtPiece };
-    setArtPiecesInfo(clonedList);
+    updateArtPiecesInfo((draft) => {
+   
+      if (!draft[slug]) {
+        draft[slug] = { isFavorite: false, comments: [] };
+      }
+    
+      draft[slug].isFavorite = !draft[slug].isFavorite;
+    });
   }
-  if (error) return <div>Error loading art pieces</div>;
-  if (!artPieces) return <div>Loading...</div>;
 
   return (
     <>

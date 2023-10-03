@@ -1,19 +1,26 @@
+import React, { useState } from "react";
 
+export default function CommentForm({ onSubmitComment }) {
+  const [commentText, setCommentText] = useState("");
 
-export default function CommentForm({onSubmitComment}){
-    function handleSubmit(event){
-        event.preventDefault();
-        const comment = event.target.elements;
-        onSubmitComment(comment.value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmitComment(commentText);
+    setCommentText("");
+  };
 
-    }
-    return(
-        <>
-        <form onSubmit={handleSubmit}>
-        <label htmlFor="text">Add Comment:</label>
-        <textarea id="text" name="text" rows={5} placeholder="Leave your comment here"></textarea>
-        <button type="submit">Send Comment</button>
-        </form>
-        </>
-    )
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="text">Add Comment:</label>
+      <textarea
+        id="text"
+        name="text"
+        rows={5}
+        placeholder="Leave your comment here"
+        value={commentText}
+        onChange={(e) => setCommentText(e.target.value)}
+      ></textarea>
+      <button type="submit">Send Comment</button>
+    </form>
+  );
 }
