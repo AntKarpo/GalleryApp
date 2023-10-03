@@ -30,6 +30,7 @@ export default function pieceDetails({
         isFavorite={artPiecesInfo[slug]?.isFavorite}
         onToggleFavorite={() => onToggleFavorite(slug)}
         onComment={onSubmitComment}
+        comments={artPiecesInfo[slug]?.comments}
       />
       <button onClick={() => router.back()}>Back</button>
       <CommentForm />
