@@ -33,7 +33,6 @@ export default function pieceDetails({
         comments={artPiecesInfo[slug]?.comments}
       />
       <button onClick={() => router.back()}>Back</button>
-      <CommentForm />
     </>
   );
 }
