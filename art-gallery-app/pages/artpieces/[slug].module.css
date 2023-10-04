@@ -1,0 +1,12 @@
+.back-btn {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  border: none;
+  text-align: center;
+}
+
+.back-btn:hover {
+  background-color: beige;
+  transform: scale(1.02);
+}

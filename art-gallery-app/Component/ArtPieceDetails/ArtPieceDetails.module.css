@@ -1,0 +1,11 @@
+.art-piece-detalis {
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.detailedImage {
+  width: auto;
+  max-width: 100%;
+}
