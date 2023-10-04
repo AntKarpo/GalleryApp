@@ -1,6 +1,8 @@
+import React from "react";
 import Image from "next/image";
+import CommentForm from "../CommentForm/CommentForm";
+import Comments from "../Comments/Comments";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
-
 
 export default function ArtPieceDetails({
   image,
@@ -8,13 +10,14 @@ export default function ArtPieceDetails({
   artist,
   year,
   genre,
+  comments,
   onToggleFavorite,
   isFavorite,
-  colors
+  colors,
+  onComment,
 }) {
-
   return (
-    <>
+    <div>
       <h1>{title}</h1>
       <Image src={image} height={300} width={300} alt="image" />
       <h3>{artist}</h3>
@@ -37,9 +40,11 @@ export default function ArtPieceDetails({
         </div>
       </div>
       <FavoriteButton
-        onToggleFavorite={onToggleFavorite}
         isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
       />
-    </>
+      <CommentForm onSubmitComment={onComment} />
+      <Comments comments={comments} />
+    </div>
   );
 }

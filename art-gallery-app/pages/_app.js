@@ -1,7 +1,7 @@
+import { useImmerLocalStorageState } from "@/lib/hook/useImmerLocalStorageState";
 import useSWR from "swr";
 import GlobalStyle from "../styles";
 import Layout from "@/Component/Layout/layout";
-import { useEffect, useState } from "react";
 import Header from "@/Component/Header/Header";
 import Footer from "@/Component/Footer/Footer";
 
@@ -13,46 +13,44 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
-  const [artPiecesInfo, setArtPiecesInfo] = useState({});
-
-  function Comment(slug, newComment) {
-    const artPiece = artPiecesInfo.find((piece) => piece.slug === slug);
-    if (artPiece) {
-      setArtPiecesInfo(
-        artPiecesInfo.map((pieceInfo) => {
-          if (pieceInfo.slug === slug) {
-            return pieceInfo.comments
-              ? { ...pieceInfo, comments: [...pieceInfo.comments, newComment] }
-              : { ...pieceInfo, comments: [newComment] };
-          }
-        })
-      );
+  const [artPiecesInfo, updateArtPiecesInfo] = useImmerLocalStorageState(
+    "art-pieces-info",
+    { defaultValue: {} }
+  );
+  function handleComment(slug, newComment) {
+    const draft = { ...artPiecesInfo };
+    if (!draft[slug]) {
+      draft[slug] = { isFavorite: false, comments: [] };
     }
+
+    draft[slug].comments.push(newComment);
+    updateArtPiecesInfo(draft);
   }
 
   function handleToggle(slug) {
-    const favoriteArtPiece = artPiecesInfo[slug] || {};
-    favoriteArtPiece.isFavorite = !favoriteArtPiece.isFavorite;
-    const clonedList = { ...artPiecesInfo };
-    clonedList[slug] = { ...favoriteArtPiece };
-    setArtPiecesInfo(clonedList);
-  }
+    const draft = { ...artPiecesInfo };
+      if (!draft[slug]) {
+        draft[slug] = { isFavorite: false, comments: [] };
+      }
+
+      draft[slug].isFavorite = !draft[slug].isFavorite;
+      updateArtPiecesInfo(draft);
+    }
+
   if (error) return <div>Error loading art pieces</div>;
   if (!artPieces) return <div>Loading...</div>;
   return (
-    <>
-      <Layout>
-        <Header />
-        <GlobalStyle />
-        <Component
-          {...pageProps}
-          artPieces={artPieces}
-          artPiecesInfo={artPiecesInfo}
-          onToggleFavorite={handleToggle}
-          Comment={Comment}
-        />
-        <Footer />
-      </Layout>
-    </>
+    <Layout>
+      <Header />
+      <GlobalStyle />
+      <Component
+        {...pageProps}
+        artPieces={artPieces}
+        artPiecesInfo={artPiecesInfo}
+        onToggleFavorite={handleToggle}
+        onComment={handleComment}
+      />
+      <Footer />
+    </Layout>
   );
 }
