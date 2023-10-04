@@ -12,9 +12,9 @@ export default function Comments({ comments, onDelete }) {
       <h2 className={styles["text-size"]}>Comments</h2>
       <ul className={styles.commentList}>
         {comments?.map((comment, index) => (
-          <li key={index}>
+          <li key={index} className={styles.commentIndi}>
             {comment.text} {comment.timestamp} 
-            <button className='buttonDelete' onClick={() => onDelete(slug, index)}>X</button>
+            <button className={styles.buttonDelete} onClick={() => onDelete(slug, index)}>X</button>
           </li>
         ))}
       </ul>
