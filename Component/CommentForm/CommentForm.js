@@ -19,7 +19,7 @@ export default function CommentForm({ onSubmitComment }) {
     const minutes = currentDate.getMinutes().toString();
     const seconds = currentDate.getSeconds().toString();
 
-    const formattedDate = ` | ${hours}:${minutes}:${seconds} / ${day}.${month}.${year}`;
+    const formattedDate = ` ${day}.${month}.${year} / ${hours}:${minutes}:${seconds}`;
     const comment = {
       text: commentText,
       timestamp: formattedDate,
@@ -38,7 +38,7 @@ export default function CommentForm({ onSubmitComment }) {
       <textarea
         id="text"
         name="text"
-        rows={5}
+        rows={4}
         placeholder="Leave your comment here......"
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}

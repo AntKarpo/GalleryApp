@@ -13,7 +13,7 @@ export default function Comments({ comments, onDelete }) {
       <ul className={styles.commentList}>
         {comments?.map((comment, index) => (
           <li key={index} className={styles.commentIndi}>
-            {comment.text} {comment.timestamp} 
+            {comment.text} <span className={styles.span}>{comment.timestamp} </span>
             <button className={styles.buttonDelete} onClick={() => onDelete(slug, index)}>X</button>
           </li>
         ))}

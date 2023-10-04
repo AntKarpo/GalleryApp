@@ -1,6 +1,7 @@
 import ArtPieceDetails from "../../Component/ArtPieceDetails/ArtPieceDetails";
 import { useRouter } from "next/router";
 import styles from "./[slug].module.css";
+import Image from "next/image";
 
 export default function pieceDetails({
   artPieces,
@@ -21,7 +22,7 @@ export default function pieceDetails({
   return (
     <>
       <button onClick={() => router.back()} className={styles["back-btn"]}>
-        Back
+       <Image className={styles["back-btn"]} src="/assets/Arrow.png" width={60} height={40} alt="arrow"/>
       </button>
       <ArtPieceDetails
         onBack={() => router.back()}
