@@ -4,7 +4,8 @@
   background-color: beige;
   padding: 20px;
   overflow: hidden;
-  border: solid black;
+  border: 6px solid black;
+  
 }
 
 .content {
