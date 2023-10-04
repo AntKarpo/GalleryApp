@@ -3,6 +3,7 @@ import Image from "next/image";
 import CommentForm from "../CommentForm/CommentForm";
 import Comments from "../Comments/Comments";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import styles from "./ArtPieceDetails.module.css";
 
 export default function ArtPieceDetails({
   image,
@@ -17,15 +18,22 @@ export default function ArtPieceDetails({
   onComment,
 }) {
   return (
-    <div>
+    <div className={styles["art-piece-detalis"]}>
       <h1>{title}</h1>
-      <Image src={image} height={300} width={300} alt="image" />
-      <h3>{artist}</h3>
-      <p>{year}</p>
-      <p>{genre}</p>
+      <Image
+        src={image}
+        height={300}
+        width={300}
+        alt="image"
+        className={styles.detailedImage}
+      />
+      <h3>Artist: {artist}</h3>
+      <p>Year: {year}</p>
+      <p> Genre: {genre}</p>
       <div>
-        <h4>Color Palette:</h4>
-        <div style={{ display: "flex" }}>
+        <div
+          style={{ display: "flex", justifyContent: "center", padding: "10px" }}
+        >
           {colors.map((color, index) => (
             <div
               key={index}

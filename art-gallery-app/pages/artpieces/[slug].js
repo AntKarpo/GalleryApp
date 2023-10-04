@@ -1,6 +1,7 @@
 import ArtPieceDetails from "../../Component/ArtPieceDetails/ArtPieceDetails";
 import { useRouter } from "next/router";
 import CommentForm from "@/Component/CommentForm/CommentForm";
+import styles from "./[slug].module.css";
 
 export default function pieceDetails({
   artPieces,
@@ -19,6 +20,9 @@ export default function pieceDetails({
   };
   return (
     <>
+      <button onClick={() => router.back()} className={styles["back-btn"]}>
+        Back
+      </button>
       <ArtPieceDetails
         onBack={() => router.back()}
         image={imageSource}
@@ -32,7 +36,6 @@ export default function pieceDetails({
         onComment={onSubmitComment}
         comments={artPiecesInfo[slug]?.comments}
       />
-      <button onClick={() => router.back()}>Back</button>
     </>
   );
 }
