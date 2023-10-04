@@ -2,22 +2,23 @@
   list-style: none;
   text-align: center;
   font-size: 25px;
-  font-style:oblique;
+  font-style: oblique;
 }
 
 .text-size {
   font-size: 20px;
 }
-.commentIndi{
+.commentIndi {
   width: 80%;
- margin-left: 100px;
+  margin-left: 100px;
   border: solid black;
   border-radius: 20px;
   margin-bottom: 10px;
   padding: 10px;
+  background-color: #dea1a128;
 }
 
-.buttonDelete{
+.buttonDelete {
   color: red;
   background: none;
   text-decoration: solid 10px;
