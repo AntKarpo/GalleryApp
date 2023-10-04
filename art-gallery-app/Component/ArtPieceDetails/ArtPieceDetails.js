@@ -16,6 +16,7 @@ export default function ArtPieceDetails({
   isFavorite,
   colors,
   onComment,
+  onDelete
 }) {
   return (
     <div className={styles["art-piece-detalis"]}>
@@ -52,7 +53,7 @@ export default function ArtPieceDetails({
         onToggleFavorite={onToggleFavorite}
       />
       <CommentForm onSubmitComment={onComment} />
-      <Comments comments={comments} />
+      <Comments comments={comments} onDelete={onDelete} />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import ArtPieceDetails from "../../Component/ArtPieceDetails/ArtPieceDetails";
 import { useRouter } from "next/router";
-import CommentForm from "@/Component/CommentForm/CommentForm";
 import styles from "./[slug].module.css";
 
 export default function pieceDetails({
@@ -8,6 +7,7 @@ export default function pieceDetails({
   onToggleFavorite,
   artPiecesInfo,
   onComment,
+  onDelete
 }) {
   const router = useRouter();
   const { slug } = router.query;
@@ -35,6 +35,7 @@ export default function pieceDetails({
         onToggleFavorite={() => onToggleFavorite(slug)}
         onComment={onSubmitComment}
         comments={artPiecesInfo[slug]?.comments}
+        onDelete={onDelete}
       />
     </>
   );

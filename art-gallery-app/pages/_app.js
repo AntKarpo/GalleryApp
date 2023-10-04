@@ -37,6 +37,18 @@ export default function App({ Component, pageProps }) {
       updateArtPiecesInfo(draft);
     }
 
+    function onDeleteComment(slug, commentIndex) {
+      const draft = { ...artPiecesInfo };
+      if (draft[slug] && draft[slug].comments) {
+        draft[slug].comments = draft[slug].comments.filter(
+          (comment, index) => index !== commentIndex
+        );
+    
+        updateArtPiecesInfo(draft);
+      }
+    }
+    
+
   if (error) return <div>Error loading art pieces</div>;
   if (!artPieces) return <div>Loading...</div>;
   return (
@@ -49,6 +61,7 @@ export default function App({ Component, pageProps }) {
         artPiecesInfo={artPiecesInfo}
         onToggleFavorite={handleToggle}
         onComment={handleComment}
+        onDelete={onDeleteComment}
       />
       <Footer />
     </Layout>
