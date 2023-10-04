@@ -10,7 +10,9 @@ export default createGlobalStyle`
   
   body {
     margin: 0;
-    background-image: url("public/assets/BackGroundArtGallery.jpg");
+    background-image: url("/assets/BackGroundArtGallery.jpg");
+    background-size: cover;
+    background-repeat:no-repeat;
     font-family: system-ui;
   }
 `;
